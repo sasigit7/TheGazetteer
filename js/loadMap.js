@@ -1,3 +1,6 @@
+$(document).ready(function () {
+
+});
 //Enabling map
 let map = L.map("map", {
   attributionControl: false
@@ -19,6 +22,7 @@ $.ajax({
   dataType: "json",
   url: "data/countryBorders.geo.json",
   success: function (data) {
+    let option = "";
     $(data.features).each(function (key, data) {
       district_boundary.addData(data); //adding each feature to district_boundary
 
@@ -28,10 +32,9 @@ $.ajax({
         '")>' +
         data.properties.name +
         "</td></tr>"; // adding countries in the list
+        option += '<option value="'+data.properties.iso_a2+'">'+data.properties.name+'</option>'
     });
-
-    countries_tab += "</tbody></table>";
-    $("#country_list").html(countries_tab);
+    $("#country_list").append(option).select2();
     district_boundary.setStyle(polystyle); //setting style for country boundries
   },
 }).error(function () {});

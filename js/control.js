@@ -10,7 +10,7 @@ map.zoomControl.setPosition("topright");
 
 // Description: A Leaflet control that search markers/features location by custom property.
 // Source:  https://github.com/stefanocudini/leaflet-search
-let controlSearch = new L.Control.Search({
+/*let controlSearch = new L.Control.Search({
   position: "topleft",
   layer: district_boundary, // name of the layer
   initial: true, // search elements only by initial text
@@ -34,7 +34,7 @@ controlSearch.on("search:locationfound", function (e) {
 });
 
 // Implementation: Added Search control bar for searching countries on the top left of the map
-map.addControl(controlSearch);
+map.addControl(controlSearch);*/
 
 //Ajax for loading the country info
 function LoadCountryInfo(name) {

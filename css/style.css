@@ -1,3 +1,6 @@
+html,body{
+  height: 100%;
+}
 /* Navbar */
 .navbar-custom {
   background-color: #0b2020;
@@ -128,26 +131,25 @@
   }
 }
 
-@media (max-width: 600px) {
-  #country_list {
-    height: 200px;
-    width: 450px;
-    margin: 0 auto;
-    overflow: hidden;
-    background-color: rgb(71, 187, 255);
-  }
-
-  #country_list:hover {
-    overflow-y: scroll;
-  }
-}
-
 /* Map */
-#map {
-  position: inherited;
-  height: 76vh;
-  margin: 0;
-  padding: 0;
+.container-fluid,.row,#map,#map_parent {
+  height: 100%;
+}
+#map_parent{
+  position: relative;
+  padding:0;
+}
+#map_sibling_top{
+  position: absolute;
+  top:15px;
+  left: 50%;
+  transform:translate(-50%,0);
+  -webkit-transform:translate(-50%,0);
+  width: 300px;
+  z-index: 401;
+}
+#country_list{
+  width: 100%;
 }
 
 .table-responsive {
