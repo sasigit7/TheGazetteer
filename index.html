@@ -25,10 +25,11 @@
 <!--      <div class="col-md-2 border border-dark border-primary rounded-right border-bottom-0 border-top-0 table-responsive" id="country_list"></div>-->
       <div class="col-md-12" id="map_parent">
         <div id="map_sibling_top">
-          <select id="country_list">
+          <select id="country_list" onchange="zoomTo(this.value)">
             <option value="">Select a country</option>
           </select>
         </div>
+        <div class="col-md-4 m-10" id="country_info" style="position: absolute;left: 6px;top: 16px;z-index: 401;padding: 0;"></div>
         <div id="map"></div>
       </div>
 <!--      <div class="col-md-4 m-10" id="country_info"></div>-->
@@ -93,6 +94,7 @@
   </div>
   
   <script src="js/jquery-min.js"></script>
+  <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/leaflet.js"></script>
