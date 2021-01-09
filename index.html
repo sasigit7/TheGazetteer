@@ -1,114 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="description" content="Country Profiler With a Map">
-  <meta name="keywords" content="HTML, CSS, Bootstrap, JavaScript, Leaflet, AJAX, JSON, PHP">
-  <meta name="author" content="Shashi">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Gazetteer</title>
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
-  <link rel="stylesheet" href="css/leaflet.css" />
-  <link rel="stylesheet" href="css/leaflet-search.css" />
-  <!-- Material Design Bootstrap -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet" />
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="css/style.css" />
-</head>
-<body>
-  <!-- Three Column Layout  -->
-  <div class="container-fluid">
-    <div class="row">
-<!--      <div class="col-md-2 border border-dark border-primary rounded-right border-bottom-0 border-top-0 table-responsive" id="country_list"></div>-->
-      <div class="col-md-12" id="map_parent">
-        <div id="map_sibling_top">
-          <select id="country_list" onchange="zoomTo(this.value)">
-            <option value="">Select a country</option>
-          </select>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Country Profiler With a Map" />
+    <meta
+      name="keywords"
+      content="HTML, CSS, Bootstrap, JavaScript, Leaflet, AJAX, JSON, PHP"
+    />
+    <meta name="author" content="Shashi" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Gazetteer</title>
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <link rel="stylesheet" href="css/leaflet-search.css" />
+    <!-- Material Design Bootstrap -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Single Page Map Layout With Modal Overlay -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12" id="map_parent">
+          <div id="map_sibling_top">
+            <select id="country_list" onchange="zoomTo(this.value)">
+              <option value="">Select a country</option>
+            </select>
+          </div>
+          <div
+            class="bg-info"
+            id="country_info"
+            style="
+              position: absolute;
+              left: -300px;
+              top: 10px;
+              z-index: 1001;
+              padding: 0;
+              min-width: 300px;
+              width: auto;
+              height: 400px;
+              overflow-y: auto;
+            "
+          ></div>
+          <div id="map"></div>
         </div>
-        <div class="bg-info" id="country_info" style="position: absolute;left: -300px;top: 10px;z-index: 1001;padding: 0;min-width: 300px;width: auto;height: 400px;overflow-y: auto;"></div>
-        <div id="map"></div>
-      </div>
-<!--      <div class="col-md-4 m-10" id="country_info"></div>-->
-      <!-- Corona Data -->
-      <div class="modal fade" id="coronoModal">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title text-warning">Covid Details</h4>
-              <button type="button" class="close" data-dismiss="modal">
-                &times;
-              </button>
-            </div>
-            <div class="modal-body" id="covid_data"></div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                Close
-              </button>
+        <!-- Corona Data -->
+        <div class="modal fade" id="coronoModal">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title text-warning">Covid Details</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                  &times;
+                </button>
+              </div>
+              <div class="modal-body" id="covid_data"></div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <!-- Weather Data -->
-      <div class="modal fade" id="weatherModal">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title text-warning">Weather Info</h4>
-              <button type="button" class="close" data-dismiss="modal">
-                &times;
-              </button>
-            </div>
-            <div class="modal-body" id="weather_data"></div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                Close
-              </button>
+        <!-- Weather Data -->
+        <div class="modal fade" id="weatherModal">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title text-warning">Weather Info</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                  &times;
+                </button>
+              </div>
+              <div class="modal-body" id="weather_data"></div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <!-- News Data -->
-      <div class="modal fade" id="newsModal">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title text-warning">Latest News</h4>
-              <button type="button" class="close" data-dismiss="modal">
-                &times;
-              </button>
-            </div>
-            <div class="modal-body" id="news_data"></div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                Close
-              </button>
+        <!-- News Data -->
+        <div class="modal fade" id="newsModal">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title text-warning">Latest News</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                  &times;
+                </button>
+              </div>
+              <div class="modal-body" id="news_data"></div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  
-  <script src="js/jquery-min.js"></script>
-  <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/leaflet.js"></script>
-  <script src="js/leaflet-search.js"></script>
-  <script src="js/jquery.blockUI.js"></script>
-  <!-- <script src="https://stamen-tiles-{S}.a.ssl.fastly.net"></script> -->
-  <!-- <script src="https://stamen-tiles.a.ssl.fastly.net"></script> -->
-  <!-- <script src="https://stamen-maps.a.ssl.fastly.net/js/tile.stamen.js"></script> -->
-  <!-- <script src="//stamen-tiles-{s}.a.ssl.fastly.net/"></script> -->
-  <!-- <script src="https://stamen-tiles-%7Bs%7D.a.ssl.fastly.net/toner-lite/%7Bz%7D/%7Bx%7D/%7By%7D.png"></script> -->
-  <!-- <script src="http://maps.stamen.com/js/tile.stamen.js?v1.3.0"></script> -->
-  <script src="js/tile.stamen.js"></script>
-  <script src="js/loadMap.js"></script>
-  <script src="js/control.js"></script>
-  <script src="js/zoomToLocation.js"></script>
-</body>
+    <script src="js/jquery-min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/leaflet.js"></script>
+    <script src="js/leaflet-search.js"></script>
+    <script src="js/jquery.blockUI.js"></script>
+    <script src="js/tile.stamen.js"></script>
+    <script src="js/loadMap.js"></script>
+    <script src="js/control.js"></script>
+    <script src="js/zoomToLocation.js"></script>
+  </body>
 </html>

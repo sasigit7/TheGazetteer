@@ -3,17 +3,11 @@ $(document).ready(function () {
 });
 //Enabling map
 let map = L.map("map", {
-  attributionControl: false
+  attributionControl: false,
 }).setView([0, 0], 1.5);
 //Adding basemap
 let layer = new L.StamenTileLayer("toner");
 map.addLayer(layer);
-
-//Declaring countries table
-/*
-let countries_tab =
-  "<table class='table table-hover' style='font-family:Georgia, arial,helvetica;'><thead class='glowing-btn'><tr><th scope='col' >Scroll & Select A Country</th></tr></thead><tbody>";
-*/
 
 //Declaring country_boundry
 let district_boundary = new L.geoJson();
@@ -28,20 +22,18 @@ $.ajax({
     let countries_and_codes = [];
     $(data.features).each(function (key, data) {
       district_boundary.addData(data); //adding each feature to district_boundary
-
-      /*countries_tab +=
-        '<tr><td onClick=zoomTo("' +
-        data.properties.iso_a2 +
-        '")>' +
-        data.properties.name +
-        "</td></tr>";*/ // adding countries in the list
-        countries_names.push(data.properties.name);
-        countries_and_codes[data.properties.name] = data.properties.iso_a2;
+      countries_names.push(data.properties.name);
+      countries_and_codes[data.properties.name] = data.properties.iso_a2;
     });
     countries_names.sort();
     let option = "";
-    for(let country of countries_names){
-      option += '<option value="'+countries_and_codes[country]+'">'+country+'</option>'
+    for (let country of countries_names) {
+      option +=
+        '<option value="' +
+        countries_and_codes[country] +
+        '">' +
+        country +
+        "</option>";
     }
     $("#country_list").append(option).select2();
     district_boundary.setStyle(polystyle()); //setting style for country boundries
@@ -74,23 +66,9 @@ function highstyle() {
   };
 }
 
-//Making to zoom on a country
-/*function zoomTo(iso) {
-  country = iso; //$(e).html();
-  district_boundary.eachLayer(function (layer) {
-    if (layer.feature.properties.iso_a2 == country) {
-      highlight_boundary.clearLayers();
-      highlight_boundary.addData(layer.feature);
-      map.fitBounds(layer.getBounds()); //zoom to country
-      highlight_boundary.setStyle(highstyle); // make highlight
-      LoadCountryInfo(country); //loading country info
-    }
-  });
-}*/
-
 var selected_layer;
 function zoomTo(iso) {
-  if(iso=="") return;
+  if (iso == "") return;
   country = iso;
   district_boundary.setStyle(polystyle());
   district_boundary.eachLayer(function (layer) {
