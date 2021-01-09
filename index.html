@@ -29,7 +29,7 @@
             <option value="">Select a country</option>
           </select>
         </div>
-        <div class="col-md-4 m-10" id="country_info" style="position: absolute;left: 6px;top: 16px;z-index: 401;padding: 0;"></div>
+        <div class="bg-info" id="country_info" style="position: absolute;left: -300px;top: 10px;z-index: 1001;padding: 0;min-width: 300px;width: auto;height: 400px;overflow-y: auto;"></div>
         <div id="map"></div>
       </div>
 <!--      <div class="col-md-4 m-10" id="country_info"></div>-->
@@ -99,6 +99,7 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/leaflet.js"></script>
   <script src="js/leaflet-search.js"></script>
+  <script src="js/jquery.blockUI.js"></script>
   <!-- <script src="https://stamen-tiles-{S}.a.ssl.fastly.net"></script> -->
   <!-- <script src="https://stamen-tiles.a.ssl.fastly.net"></script> -->
   <!-- <script src="https://stamen-maps.a.ssl.fastly.net/js/tile.stamen.js"></script> -->

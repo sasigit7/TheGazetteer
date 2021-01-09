@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+  // $("#country_info").height($(window).height()-16);
 });
 //Enabling map
 let map = L.map("map", {
