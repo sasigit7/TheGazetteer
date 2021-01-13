@@ -35,3 +35,7 @@ function LoadCountryInfo(name) {
     },
   });
 }
+
+function hide_popup() {
+  $("#country_info").animate({ left: "-350px" }, 1000);
+}

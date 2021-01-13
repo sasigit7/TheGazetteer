@@ -290,3 +290,15 @@ footer .quick-links {
   height: 50vh;
   overflow-y: scroll;
 }
+
+#country_info{
+  position: absolute;
+  left: -300px;
+  top: 10px;
+  z-index: 1001;
+  padding: 0;
+  min-width: 300px;
+  width: auto;
+  height: 400px;
+  overflow-y: auto;
+}

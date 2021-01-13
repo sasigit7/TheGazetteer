@@ -14,7 +14,7 @@ $flag = $data['flag'];
 $currency = $data['currencies'][0]['name'];
 
 //Setting Country data/html for Modal info	
-$countryHtml = "<div class='card text-white bg-info m-10' style='max-width: 100vw;'><div class='card-header'><h2>$country_name</h2></div><div class='card-body pb-10' style='overflow-y: auto;'><p class='card-text'>";
+$countryHtml = "<div class='card text-white bg-info m-10' style='max-width: 100vw;'><div class='card-header'><i class='fas fa-arrow-left' style='margin-right: 16px;' onclick='hide_popup()'></i><h2 style='display: inline;'>$country_name</h2></div><div class='card-body pb-10' style='overflow-y: auto;'><p class='card-text'>";
 $countryHtml .= "<table class='table table-borderless text-white'>";  
 $countryHtml .= "<tr><th>Capital</th><td>$capital</td></tr>";  
 $countryHtml .= "<tr><th>Population</th><td>$population</td></tr>";  
