@@ -36,18 +36,18 @@ $.ajax({
         "</option>";
     }
     $("#country_list").append(option).select2();
-    district_boundary.setStyle(polystyle()); //setting style for country boundries
+    district_boundary.setStyle(polystyle()); //setting style for country boundaries
   },
 }).error(function () {});
 
 //Define style
 function polystyle() {
   return {
-    fillColor: "green",
-    weight: 2,
-    opacity: 1,
+    fillColor: "brown",
+    weight: 1,
+    opacity: 0.4,
     color: "white", //Outline color
-    fillOpacity: 0.7,
+    fillOpacity: 0.2,
   };
 }
 
@@ -59,10 +59,10 @@ highlight_boundary.addTo(map);
 function highstyle() {
   return {
     fillColor: "blue",
-    weight: 2,
-    opacity: 1,
+    weight: 1,
+    opacity: 0.4,
     color: "white", //Outline color
-    fillOpacity: 0.7,
+    fillOpacity: 0.2,
   };
 }
 

@@ -14,7 +14,8 @@ function LoadCountryInfo(name) {
     $("#country_info").animate({ left: "5px" }, 1000);
   }
   $("#country_info").block({
-    message: '<img src="https://i.stack.imgur.com/FhHRx.gif" />',
+    // message: '<img src="https://i.stack.imgur.com/FhHRx.gif" />',
+    message: '<img src="64.gif" />',
   });
 
   $.ajax({
@@ -36,6 +37,7 @@ function LoadCountryInfo(name) {
   });
 }
 
+// Pop up Modal hide/show
 function hide_popup() {
   $("#country_info").animate({ left: "-350px" }, 1000);
 }

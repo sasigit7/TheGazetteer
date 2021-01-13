@@ -10,35 +10,40 @@
     <meta name="author" content="Shashi" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Gazetteer</title>
+    <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
       integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
       crossorigin="anonymous"
     />
+    <!-- Select2 -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css"
       rel="stylesheet"
     />
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- Leaflet -->
     <link rel="stylesheet" href="css/leaflet.css" />
-    <link rel="stylesheet" href="css/leaflet-search.css" />
-    <!-- Material Design Bootstrap -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css"
-      rel="stylesheet"
-    />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <!-- Favicon  -->
+    <link rel="shortcut icon" href="myIcon.ico" type="image/x-icon" />
+    <!-- <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" /> -->
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css" />
   </head>
+
   <body>
-    <!-- Single Page Map Layout With Modal Overlay -->
+    <!-- Single Page Map Layout With a Pop up Modal Overlay -->
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12" id="map_parent">
           <div id="map_sibling_top">
             <select id="country_list" onchange="zoomTo(this.value)">
-              <option value="">Select a country</option>
+              <option value="">Select Country</option>
             </select>
           </div>
           <div class="bg-info" id="country_info"></div>
@@ -120,7 +125,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/leaflet.js"></script>
-    <script src="js/leaflet-search.js"></script>
     <script src="js/jquery.blockUI.js"></script>
     <script src="js/tile.stamen.js"></script>
     <script src="js/loadMap.js"></script>
