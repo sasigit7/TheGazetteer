@@ -19,7 +19,7 @@ if (navigator.geolocation) {
       });
       $.ajax({
         url:
-          "http://api.geonames.org/countryCodeJSON?lat=" +
+          "//api.geonames.org/countryCodeJSON?lat=" +
           latitude +
           "&lng=" +
           longitude +
