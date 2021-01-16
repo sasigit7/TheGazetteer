@@ -39,3 +39,11 @@ body {
   height: 400px;
   overflow-y: auto;
 }
+.pull_country_info_popup{
+  position: absolute;
+  top: 10px;
+  z-index: 1002;
+  left: -40px;
+  color: white;
+  border-radius: 0;
+}

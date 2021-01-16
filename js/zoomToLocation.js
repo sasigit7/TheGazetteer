@@ -19,7 +19,7 @@ if (navigator.geolocation) {
       });
       $.ajax({
         url:
-          "https://api.geonames.org/countryCodeJSON?lat=" +
+          "php/getCountryCodeFromLatLng.php?lat=" +
           latitude +
           "&lng=" +
           longitude +
@@ -27,6 +27,7 @@ if (navigator.geolocation) {
         type: "GET",
         success: function (json) {
           $.unblockUI();
+          json = JSON.parse(json);
           console.log(json);
           const country_code = json.countryCode;
           $("#country_list").val(country_code).trigger("change");

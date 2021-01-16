@@ -4,7 +4,6 @@ $country = $_POST['country'];
 
 //Getting info from restcountries api
 $data = file_get_contents("https://restcountries.eu/rest/v2/alpha/$country");
-
 //Attaching data to PHP variables
 $data = json_decode($data, true);
 $country_name = $data['name'];
@@ -12,6 +11,8 @@ $capital = $data['capital'];
 $population = $data['population'];
 $flag = $data['flag'];
 $currency = $data['currencies'][0]['name'];
+$lat = $data['latlng'][0];
+$lng = $data['latlng'][1];
 
 //Setting Country data/html for Modal info	
 $countryHtml = "<div class='card text-white bg-info m-10' style='max-width: 100vw;'><div class='card-header'><i class='fas fa-arrow-left' style='margin-right: 16px;' onclick='hide_popup()'></i><h2 style='display: inline;'>$country_name</h2></div><div class='card-body pb-10' style='overflow-y: auto;'><p class='card-text'>";
@@ -55,7 +56,7 @@ $coronaHtml .= "<tr><th>Recovered per Million</th><td>$recoveredPerOneMillion</t
 $coronaHtml .= "</table>";  
 
 //Getting Weather Info
-$weatherData = file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=$capital,$country&APPID=4264d96a45968735df7a8073aa680813");
+/*$weatherData = file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=$capital,$country&APPID=4264d96a45968735df7a8073aa680813");
 $weatherData = json_decode($weatherData, true);
 $average_temp = $weatherData['main']['temp'].' kelvin';
 $temp_min = $weatherData['main']['temp_min'].' kelvin';
@@ -76,7 +77,34 @@ $weatherHtml .= "<tr><th>Humidity cases</th><td>$humidity</td></tr>";
 $weatherHtml .= "<tr><th>Cloud Percentage</th><td>$cloud_percentage</td></tr>";  
 $weatherHtml .= "<tr><th>Wind Speed</th><td>$wind_speed</td></tr>";  
 $weatherHtml .= "<tr><th>Wind Degrees</th><td>$wind_degree</td></tr>"; 
-$weatherHtml .= "</table>";  
+$weatherHtml .= "</table>";*/
+
+$weatherData = file_get_contents("https://api.openweathermap.org/data/2.5/onecall?lat=$lat&lon=$lng&exclude=current,minutely,hourly,alerts&APPID=4264d96a45968735df7a8073aa680813");
+$weatherData = json_decode($weatherData, true);
+
+$weatherHtml = "<table class='table table-borderless' style=font-size:2vh><thead>";
+$weatherHtml .= "<tr><th>Date</th><th>Day</th><th>Min</th><th>Max</th><th>Night</th><th>Evening</th>";
+$weatherHtml .= "<!--<th>Morning</th><th>Pressure</th><th>Humidity cases</th><th>Cloud Percentage</th><th>Wind Speed</th><th>Wind Degrees</th>--></tr></thead><tbody>";
+
+for($i=0;$i<sizeof($weatherData['daily']);$i++){
+    $d = $weatherData['daily'][$i];
+    $date = date('Y-m-d',$d['dt']);
+    $temp_day = $d['temp']['day'];//.' kelvin';
+    $temp_min = $d['temp']['min'];//.' kelvin';
+    $temp_max = $d['temp']['max'];//.' kelvin';
+    $temp_night = $d['temp']['night'];//.' kelvin';
+    $temp_eve = $d['temp']['eve'];//.' kelvin';
+    $temp_morn = $d['temp']['morn'];//.' kelvin';
+    $pressure = $d['pressure'].' hPa';
+    $humidity = $d['humidity'].'%';
+    $cloud_percentage = $d['clouds'].'%';
+    $wind_speed = $d['wind_speed'].'meter/sec';
+    $wind_degree = $d['wind_deg'].'degrees';
+
+    $weatherHtml .= "<tr><td>$date</td><td>$temp_day</td><td>$temp_min</td><td>$temp_max</td><td>$temp_night</td><td>$temp_eve</td>";
+    $weatherHtml .= "</tr>";//<td>$temp_morn</td><td>$pressure</td><td>$humidity</td><td>$cloud_percentage</td><td>$wind_speed</td><td>$wind_degree</td>
+}
+$weatherHtml .= "</tbody></table>";
 
 // Getting News Info 
 $newsData = file_get_contents("http://api.mediastack.com/v1/news?country=$country&access_key=529740f259ac5f9a3db2e50100c43d28");
