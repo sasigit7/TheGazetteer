@@ -31,7 +31,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <!-- <link rel="manifest" href="/site.webmanifest.json" /> -->
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css" />
   </head>
@@ -47,7 +47,12 @@
             </select>
           </div>
           <div class="bg-info" id="country_info"></div>
-          <button class="bg-info btn pull_country_info_popup" onclick="show_popup();"><i class="fas fa-arrow-right"></i></button>
+          <button
+            class="bg-info btn pull_country_info_popup"
+            onclick="show_popup();"
+          >
+            <i class="fas fa-arrow-right"></i>
+          </button>
           <div id="map"></div>
         </div>
         <!-- Corona Data -->
@@ -78,7 +83,7 @@
           <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <div class="modal-header">
-                <h4 class="modal-title text-warning">Weather Info</h4>
+                <h4 class="modal-title text-warning">Weather Info In °C</h4>
                 <button type="button" class="close" data-dismiss="modal">
                   &times;
                 </button>

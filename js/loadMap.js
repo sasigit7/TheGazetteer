@@ -25,7 +25,7 @@ $.ajax({
       countries_names.push(data.properties.name);
       countries_and_codes[data.properties.name] = data.properties.iso_a2;
     });
-    countries_names.sort();
+    countries_names.sort(); // Sort countries names alphabetically
     let option = "";
     for (let country of countries_names) {
       option +=
@@ -44,10 +44,10 @@ $.ajax({
 function polystyle() {
   return {
     fillColor: "brown",
-    weight: 1,
-    opacity: 0.4,
+    weight: 2,
+    opacity: 0.9,
     color: "white", //Outline color
-    fillOpacity: 0.2,
+    fillOpacity: 0.7,
   };
 }
 
@@ -58,11 +58,11 @@ highlight_boundary.addTo(map);
 //Higlight style
 function highstyle() {
   return {
-    fillColor: "blue",
+    fillColor: "green",
     weight: 1,
-    opacity: 0.4,
+    opacity: 0.2,
     color: "white", //Outline color
-    fillOpacity: 0.2,
+    fillOpacity: 0.7,
   };
 }
 
@@ -74,7 +74,7 @@ function zoomTo(iso) {
   district_boundary.eachLayer(function (layer) {
     if (layer.feature.properties.iso_a2 == country) {
       selected_layer = layer;
-      console.log(selected_layer);
+      // console.log(selected_layer);
       map.fitBounds(layer.getBounds()); //zoom to country
       layer.setStyle(highstyle()); // make highlight
       LoadCountryInfo(country); //loading country info

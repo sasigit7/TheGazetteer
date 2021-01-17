@@ -55,37 +55,16 @@ $coronaHtml .= "<tr><th>Active per Million</th><td>$activePerOneMillion</td></tr
 $coronaHtml .= "<tr><th>Recovered per Million</th><td>$recoveredPerOneMillion</td></tr>";  
 $coronaHtml .= "</table>";  
 
-//Getting Weather Info
-/*$weatherData = file_get_contents("http://api.openweathermap.org/data/2.5/weather?q=$capital,$country&APPID=4264d96a45968735df7a8073aa680813");
-$weatherData = json_decode($weatherData, true);
-$average_temp = $weatherData['main']['temp'].' kelvin';
-$temp_min = $weatherData['main']['temp_min'].' kelvin';
-$temp_max = $weatherData['main']['temp_max'].' kelvin';
-$pressure = $weatherData['main']['pressure'].' hPa';
-$humidity = $weatherData['main']['humidity'].' %';
-$cloud_percentage = $weatherData['clouds']['all'].' %';
-$wind_speed = $weatherData['wind']['speed'].' meter/sec';
-$wind_degree = $weatherData['wind']['deg'].' degrees';
-
-//Setting Weather data and html for Weather Modal
-$weatherHtml = "<table class='table table-borderless' style=font-size:2vh>";
-$weatherHtml .= "<tr><th>Average Temperature</th><td>$average_temp</td></tr>";  
-$weatherHtml .= "<tr><th>Max-Temperature</th><td>$temp_min</td></tr>";  
-$weatherHtml .= "<tr><th>Min-Temperature</th><td>$temp_max</td></tr>";  
-$weatherHtml .= "<tr><th>Pressure</th><td>$pressure</td></tr>";  
-$weatherHtml .= "<tr><th>Humidity cases</th><td>$humidity</td></tr>";  
-$weatherHtml .= "<tr><th>Cloud Percentage</th><td>$cloud_percentage</td></tr>";  
-$weatherHtml .= "<tr><th>Wind Speed</th><td>$wind_speed</td></tr>";  
-$weatherHtml .= "<tr><th>Wind Degrees</th><td>$wind_degree</td></tr>"; 
-$weatherHtml .= "</table>";*/
-
+// Getting Weather Info
 $weatherData = file_get_contents("https://api.openweathermap.org/data/2.5/onecall?lat=$lat&lon=$lng&exclude=current,minutely,hourly,alerts&APPID=4264d96a45968735df7a8073aa680813");
 $weatherData = json_decode($weatherData, true);
 
+//Setting Weather data and html for Weather Modal
 $weatherHtml = "<table class='table table-borderless' style=font-size:2vh><thead>";
 $weatherHtml .= "<tr><th>Date</th><th>Day</th><th>Min</th><th>Max</th><th>Night</th><th>Evening</th>";
 $weatherHtml .= "<!--<th>Morning</th><th>Pressure</th><th>Humidity cases</th><th>Cloud Percentage</th><th>Wind Speed</th><th>Wind Degrees</th>--></tr></thead><tbody>";
 
+// The sizeof() function returns the number of elements in an array.
 for($i=0;$i<sizeof($weatherData['daily']);$i++){
     $d = $weatherData['daily'][$i];
     $date = date('Y-m-d',$d['dt']);
@@ -102,7 +81,7 @@ for($i=0;$i<sizeof($weatherData['daily']);$i++){
     $wind_degree = $d['wind_deg'].'degrees';
 
     $weatherHtml .= "<tr><td>$date</td><td>$temp_day</td><td>$temp_min</td><td>$temp_max</td><td>$temp_night</td><td>$temp_eve</td>";
-    $weatherHtml .= "</tr>";//<td>$temp_morn</td><td>$pressure</td><td>$humidity</td><td>$cloud_percentage</td><td>$wind_speed</td><td>$wind_degree</td>
+    $weatherHtml .= "</tr>";
 }
 $weatherHtml .= "</tbody></table>";
 

@@ -12,11 +12,10 @@ map.zoomControl.setPosition("topright");
 function LoadCountryInfo(name) {
   if ($("#country_info").css("left") !== "5px") {
     $("#country_info").animate({ left: "5px" }, 1000);
-    $(".pull_country_info_popup").animate({left:"-40px"},1000);
+    $(".pull_country_info_popup").animate({ left: "-40px" }, 1000);
   }
   $("#country_info").block({
-    // message: '<img src="https://i.stack.imgur.com/FhHRx.gif" />',
-    message: '<img src="64.gif" />',
+    message: '<img src="globe.gif" />',
   });
 
   $.ajax({
@@ -25,7 +24,7 @@ function LoadCountryInfo(name) {
     data: "country=" + name,
     success: function (response) {
       $("#country_info").unblock();
-      var output = $.parseJSON(response);
+      let output = $.parseJSON(response);
       // let output = JSON.parse(response);
       // console.log(output);
       $("#country_info").html(output.countryHtml); //Adding demographic information of displayed country
@@ -38,13 +37,14 @@ function LoadCountryInfo(name) {
   });
 }
 
-// Pop up Modal hide/show
+// Pop up hide
 function hide_popup() {
   $("#country_info").animate({ left: "-999px" }, 1000);
-  $(".pull_country_info_popup").animate({left:"0"},1000);
+  $(".pull_country_info_popup").animate({ left: "0" }, 1000);
 }
 
+// Pop up Show
 function show_popup() {
   $("#country_info").animate({ left: "5px" }, 1000);
-  $(".pull_country_info_popup").animate({left:"-40px"},1000);
+  $(".pull_country_info_popup").animate({ left: "-40px" }, 1000);
 }
