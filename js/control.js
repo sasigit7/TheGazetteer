@@ -15,7 +15,11 @@ function LoadCountryInfo(name) {
     $(".pull_country_info_popup").animate({ left: "-40px" }, 1000);
   }
   $("#country_info").block({
+<<<<<<< HEAD
     message: '<img src="globe.gif" />',
+=======
+    message: '<img src="64.gif" />',
+>>>>>>> b47a037db0b104c013a4f0d6f7c2a2e7b844834f
   });
 
   $.ajax({

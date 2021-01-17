@@ -43,9 +43,15 @@ $.ajax({
 //Define style
 function polystyle() {
   return {
+<<<<<<< HEAD
     fillColor: "brown",
     weight: 2,
     opacity: 0.9,
+=======
+    fillColor: "darkbrown",
+    weight: 1,
+    opacity: 0.4,
+>>>>>>> b47a037db0b104c013a4f0d6f7c2a2e7b844834f
     color: "white", //Outline color
     fillOpacity: 0.7,
   };
@@ -58,7 +64,11 @@ highlight_boundary.addTo(map);
 //Higlight style
 function highstyle() {
   return {
+<<<<<<< HEAD
     fillColor: "green",
+=======
+    fillColor: "darkgreen",
+>>>>>>> b47a037db0b104c013a4f0d6f7c2a2e7b844834f
     weight: 1,
     opacity: 0.2,
     color: "white", //Outline color

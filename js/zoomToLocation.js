@@ -19,8 +19,12 @@ if (navigator.geolocation) {
       //BlockUI adds elements to the DOM to give it both the appearance and behavior of blocking user interaction.
       // http://jquery.malsup.com/block/
       $.blockUI({
+<<<<<<< HEAD
         // Blocking with a Gif & a custom message:
         message: '<h1><img src="star.gif" />Loading.....</h1>',
+=======
+        message: '<h1><img src="globe.gif" /></h1>',
+>>>>>>> b47a037db0b104c013a4f0d6f7c2a2e7b844834f
       });
 
       // AJAX is the art of exchanging data with a server, and update parts of a web page - without reloading the whole page.
