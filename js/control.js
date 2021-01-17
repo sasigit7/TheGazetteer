@@ -15,7 +15,6 @@ function LoadCountryInfo(name) {
     $(".pull_country_info_popup").animate({left:"-40px"},1000);
   }
   $("#country_info").block({
-    // message: '<img src="https://i.stack.imgur.com/FhHRx.gif" />',
     message: '<img src="64.gif" />',
   });
 

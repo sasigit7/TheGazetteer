@@ -43,7 +43,7 @@ $.ajax({
 //Define style
 function polystyle() {
   return {
-    fillColor: "brown",
+    fillColor: "darkbrown",
     weight: 1,
     opacity: 0.4,
     color: "white", //Outline color
@@ -58,7 +58,7 @@ highlight_boundary.addTo(map);
 //Higlight style
 function highstyle() {
   return {
-    fillColor: "blue",
+    fillColor: "darkgreen",
     weight: 1,
     opacity: 0.4,
     color: "white", //Outline color

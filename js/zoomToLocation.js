@@ -15,7 +15,7 @@ if (navigator.geolocation) {
       // https://i.stack.imgur.com/FhHRx.gif
       const coords = [latitude, longitude];
       $.blockUI({
-        message: '<h1><img src="https://i.stack.imgur.com/FhHRx.gif" /></h1>',
+        message: '<h1><img src="globe.gif" /></h1>',
       });
       $.ajax({
         url:
