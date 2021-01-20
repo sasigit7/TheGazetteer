@@ -32,18 +32,24 @@ body {
   position: absolute;
   left: -300px;
   top: 10px;
-  z-index: 1001;
+  z-index: 1000;
   padding: 0;
   min-width: 300px;
   width: auto;
-  height: 400px;
-  overflow-y: auto;
+  height: auto;
 }
 .pull_country_info_popup{
   position: absolute;
-  top: 10px;
+  top: 29px;
   z-index: 1002;
   left: -40px;
-  color: white;
-  border-radius: 0;
+  border-radius: 0 5px 5px 0;
+}
+.fas.fa-arrow-left{
+    cursor: pointer;
+}
+#news_data{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }

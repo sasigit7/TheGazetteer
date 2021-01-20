@@ -42,13 +42,36 @@
       <div class="row">
         <div class="col-md-12" id="map_parent">
           <div id="map_sibling_top">
-            <select id="country_list" onchange="zoomTo(this.value)">
+            <select id="country_list" onchange="zoomToCountry(this.value)">
               <option value="">Select Country</option>
             </select>
           </div>
-          <div class="bg-info" id="country_info"></div>
+          <div id="country_info">
+            <div class='card m-10'>
+              <div class='card-header'>
+                <i class='fas fa-arrow-left' style='margin-right: 16px;' onclick='hide_popup()'></i>
+                <h2 style='display: inline;' id="country_name"></h2>
+              </div>
+              <div class='card-body pb-10' style='overflow-y: auto;'>
+                <table class='table table-bordered'>
+                  <tr><th>Capital</th><td id="country_capital"></td></tr>
+                  <tr><th>Population</th><td id="country_population"></td></tr>
+                  <tr><th>Flag</th><td><img src='' style='height:50px' id="country_image"></td></tr>
+                  <tr><th>Currency</th><td id="country_currency"></td></tr>
+                  <tr><th>Wikipedia Page</th><td><a href='' target='_blank' class='text-dark' id="country_wikipedia">Click Here</a></td></tr>
+                </table>
+                <div class="text-center">
+                  <div class='btn-group btn-group-sm' role='group' aria-label='Basic example'>
+                    <button type='button' class='btn btn-danger' data-toggle='modal' data-target='' onclick="get_covid_data();"><i class='fal fa-shield-virus'></i> Covid</button>
+                    <button type='button' class='btn btn-success' data-toggle='modal' data-target='' onclick="get_weather_data();"><i class='fas fa-cloud-sun'></i> Weather</button>
+                    <button type='button' class='btn btn-warning' data-toggle='modal' data-target='' onclick="get_news_data();"> <i class='far fa-newspaper'></i> News</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <button
-            class="bg-info btn pull_country_info_popup"
+            class="btn btn-primary pull_country_info_popup"
             onclick="show_popup();"
           >
             <i class="fas fa-arrow-right"></i>
@@ -65,7 +88,19 @@
                   &times;
                 </button>
               </div>
-              <div class="modal-body" id="covid_data"></div>
+              <div class="modal-body" id="covid_data">
+                <table class='table table-bordered table-striped table-hover'>
+                  <tr><th>Total cases</th><td id="covid_total_cases"></td></tr>
+                  <tr><th>Active</th><td id="covid_active"></td></tr>
+                  <tr><th>Recovered</th><td id="covid_recovered"></td></tr>
+                  <tr><th>Deaths</th><td id="covid_deaths"></td></tr>
+                  <tr><th>Today cases</th><td id="covid_todayCases"></td></tr>
+                  <tr><th>Today Recovered</th><td id="covid_todayRecovered"></td></tr>
+                  <tr><th>Today Deaths</th><td id="covid_todayDeaths"></td></tr>
+                  <tr><th>Active per Million</th><td id="covid_activePerOneMillion"></td></tr>
+                  <tr><th>Recovered per Million</th><td id="covid_recoveredPerOneMillion"></td></tr>
+                </table>
+              </div>
               <div class="modal-footer">
                 <button
                   type="button"
@@ -88,7 +123,16 @@
                   &times;
                 </button>
               </div>
-              <div class="modal-body" id="weather_data"></div>
+              <div class="modal-body" id="weather_data">
+                <table class='table table-bordered table-striped table-hover table-responsive'>
+                  <thead>
+                    <tr>
+                      <th>Date</th><th>Day</th><th>Min</th><th>Max</th><th>Night</th><th>Evening</th><th>Morning</th><th>Pressure</th><th>Humidity cases</th><th>Cloud Percentage</th><th>Wind Speed</th><th>Wind Degrees</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
               <div class="modal-footer">
                 <button
                   type="button"
@@ -111,7 +155,16 @@
                   &times;
                 </button>
               </div>
-              <div class="modal-body" id="news_data"></div>
+              <div class="modal-body" id="news_data">
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="https://s.yimg.com/uu/api/res/1.2/MTMjisIHdKc7VitRvTM8PA--~B/aD0xMjAwO3c9MTIwMDthcHBpZD15dGFjaHlvbg--/https://media.zenfs.com/en/e__181/6162fc869ea2f8d4e608d31eacf79ffd" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">Ryan Gajewski</h5>
+                    <p class="card-text">This Bachelorette Contestant Asks Clare Crawley on a Date After Dale Moss Split - Yahoo Entertainment</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                  </div>
+                </div>
+              </div>
               <div class="modal-footer">
                 <button
                   type="button"
@@ -132,9 +185,6 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/leaflet.js"></script>
     <script src="js/jquery.blockUI.js"></script>
-    <script src="js/tile.stamen.js"></script>
-    <script src="js/loadMap.js"></script>
-    <script src="js/control.js"></script>
-    <script src="js/zoomToLocation.js"></script>
+    <script src="js/custom_script.js"></script>
   </body>
 </html>
