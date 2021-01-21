@@ -1,4 +1,6 @@
 # The Gazetteer
+> <p align="center">Check Original Gazetteer Version Here: <a href="https://github.com/sasigit7/Gazetteer" alt="Gazetteer"/>Gazetteer</a></p>
+</p>
 
 ## Description: 
 > This application is envisaged as a “mobile first“ website that will operate equally well on desktop computers. 
@@ -8,10 +10,9 @@
 ## Workflow:  
 > I Used PHP enabled Web server, called XAMPP to develop the application on my Local machine, Macbook.  
 > I then deployed the application Live publicly on IONOS Web Hosting Service. 
-> <p align="center">Check Original Gazetteer Version Here: <a href="https://github.com/sasigit7/Gazetteer" alt="Gazetteer"/>Gazetteer</a></p>
-</p>
-> <p align="center"> Watch Project Demo Video By Clicking Below Image: 
-  ![Watch the Demo](https://i.imgur.com/8P4YRIm.png)</p>
+> <p align="center">  Watch Project Demo Video By Clicking Below Image: 
+[![Watch the Demo](https://i.imgur.com/8P4YRIm.png)](https://youtu.be/iXhjAnfz6nM)
+  </p>
 <p align="center"> Live Link: <a href="https://thegazetteer.shashwebdev.com/" alt="Gazetteer"/>The Gazetteer</a></p>
 
 ## Application Responsiveness Across Multiple Devices:
@@ -27,7 +28,7 @@
 ## Technologies & Tools I used for this project 🛠️
 <p> Front-end -> HTML, CSS, BootStrap, Javascript, JQuery (Select-2, BlockUI Plugin), Leaflet </p>
 <p> Web Development Technique -> AJAX </p>
-<p> Back-end -> PHP </p>
+<p> Back-end -> PHP (Used To return Only Data) </p>
 <p> Third Party Free API's 
 <ul>
   <li><a href="https://restcountries.eu">List Of Countries and their demographics</a></li>
@@ -40,4 +41,7 @@
 <p> Free Icons <a href="https://fontawesome.com">Fontawesome</a></p>
 <p> Minified CSS & JS -> <a href="https://www.minifier.org/">Minify</a> </p>
 <p> Domain Registration, Web Hosting at -> <a href="https://www.ionos.co.uk/">IONOS</a></p>
+
+## References I used 🙏🙏🙏
+- <a href="https://www.google.com/">Google</a>
 
