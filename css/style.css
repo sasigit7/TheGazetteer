@@ -3,6 +3,10 @@ body {
   height: 100%;
 }
 
+.modal-body {
+  height: 70vh;
+  overflow-y: auto;
+}
 
 /* Map */
 .container-fluid,
@@ -38,18 +42,18 @@ body {
   width: auto;
   height: auto;
 }
-.pull_country_info_popup{
+.pull_country_info_popup {
   position: absolute;
   top: 29px;
   z-index: 1002;
   left: -40px;
   border-radius: 0 5px 5px 0;
 }
-.fas.fa-arrow-left{
-    cursor: pointer;
+.fas.fa-arrow-left {
+  cursor: pointer;
 }
-#news_data{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+#news_data {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
