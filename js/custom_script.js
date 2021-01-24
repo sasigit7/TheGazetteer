@@ -82,7 +82,7 @@ function get_user_location() {
           const { longitude } = position.coords;
           const coords = [latitude, longitude];
           $.blockUI({
-            message: '<h1><img src="star.gif" />Loading.....</h1>',
+            message: '<h1><img src="star.gif" /> oading...</h1>',
           });
           $.ajax({
             url:
