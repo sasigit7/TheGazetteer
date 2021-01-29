@@ -240,7 +240,7 @@ function get_country_info(country_code) {
       $("#country_name").html(country_name);
       $("#country_capital").html(details.capital);
       $("#country_population").html(details.population);
-      $("#country_image").attr("src", details.flag);
+      $("#country_flag").attr("src", details.flag);
       $("#country_currency").html(details.currencies[0]["name"]);
       $("#country_wikipedia").attr(
         "href",
