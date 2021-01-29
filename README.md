@@ -11,7 +11,7 @@
 > I Used PHP enabled Web server, called XAMPP to develop the application on my Local machine, Macbook.  
 > I then deployed the application Live publicly on IONOS Web Hosting Service. 
 > <p align="center">  Watch Project Demo Video By Clicking Below Image: 
-[![Watch the Demo](https://i.imgur.com/8P4YRIm.png)](https://youtu.be/iXhjAnfz6nM)
+[![Watch the Demo](https://i.imgur.com/ia3w9l8.png)](https://youtu.be/iXhjAnfz6nM)
   </p>
 <p align="center"> Live Link: <a href="https://thegazetteer.shashwebdev.com/" alt="Gazetteer"/>The Gazetteer</a></p>
 
@@ -20,13 +20,13 @@
 <img src="https://user-images.githubusercontent.com/24832458/105348198-e1db1c80-5bdf-11eb-8686-c4da5f455721.png" width="45%"></img> 
 <img src="https://user-images.githubusercontent.com/24832458/105348222-eacbee00-5bdf-11eb-83b3-7debbc5ba4f9.png" width="45%"></img> 
 <img src="https://user-images.githubusercontent.com/24832458/105348231-eef80b80-5bdf-11eb-85df-00ec5c5a38f6.png" width="45%"></img> 
-<img src="https://user-images.githubusercontent.com/24832458/105348237-f15a6580-5bdf-11eb-8dec-bea12b64f452.png" width="45%"></img> 
+<img src="https://user-images.githubusercontent.com/24832458/106275863-796aeb80-622e-11eb-846d-047e9959a288.png" width="45%"></img> 
 <img src="https://user-images.githubusercontent.com/24832458/105348246-f4555600-5bdf-11eb-861b-33aa7626b9e8.png" width="45%"></img> 
 
 
 
 ## Technologies & Tools I used for this project 🛠️
-<p> Front-end -> HTML, CSS, BootStrap, Javascript, JQuery (Select-2, BlockUI Plugin), Leaflet </p>
+<p> Front-end -> HTML, CSS, BootStrap, Javascript, JQuery, Leaflet </p>
 <p> Web Development Technique -> AJAX </p>
 <p> Back-end -> PHP (Used To return Only Data) </p>
 <p> Third Party Free API's 
